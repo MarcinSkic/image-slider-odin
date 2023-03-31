@@ -11,6 +11,27 @@
     transition: right 1s;
 }
 
+.slider-frame > img.not-animated {
+    transition: none;
+}
+
+.slider-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.slider-buttons > button {
+    width: 20px;
+    aspect-ratio: 1 / 1;
+}
+
+.slider nav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
 body {
     width: 100vw;
     display: flex;

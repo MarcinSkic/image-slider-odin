@@ -9,7 +9,7 @@ const getRight = function getRight(event) {
     const newIndex = imageIndex + 1 >= imagesCount ? 0 : imageIndex + 1;
     console.log({ imageIndex, newIndex });
     setIndex(newIndex);
-    event.preventDefault();
+    event?.preventDefault();
 };
 
 const getLeft = function getLeft(event) {
@@ -69,6 +69,12 @@ const generateButtons = function generateButtons() {
         buttonsContainer.append(btn);
     });
 };
+const doAutoSlide = function doAutoSlide() {
+    setTimeout(() => {
+        getRight(null);
+        doAutoSlide();
+    }, 5000);
+};
 
 const getRightBtn = document.querySelector(".get-right");
 const getLeftBtn = document.querySelector(".get-left");
@@ -76,3 +82,4 @@ getRightBtn.addEventListener("click", getRight);
 getLeftBtn.addEventListener("click", getLeft);
 generateButtons();
 setIndex(0);
+doAutoSlide();

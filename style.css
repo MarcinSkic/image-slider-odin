@@ -24,6 +24,13 @@
 .slider-buttons > button {
     width: 20px;
     aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(150, 164, 173);
+}
+
+.slider-buttons > button.selected {
+    background-color: brown;
 }
 
 .slider nav {

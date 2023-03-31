@@ -50,6 +50,14 @@ const setIndex = function setIndex(value) {
         child.dataset.difference = `${difference}`;
     });
 
+    [...buttonsContainer.children].forEach((child) => {
+        if (Number(child.dataset.index) === imageIndex) {
+            child.classList.add("selected");
+        } else {
+            child.classList.remove("selected");
+        }
+    });
+
     console.log(`currentIndex: ${imageIndex}`);
 };
 

@@ -2,18 +2,17 @@ const frame = document.querySelector(".slider-frame");
 //TODO: Take it from frame width
 const width = 200;
 let imageIndex = 0;
-
-[...frame.children].forEach((child, index) => {
-    child.classList.remove("shown", "right", "left");
-});
+const imagesCount = frame.children.length;
 
 const getRight = function getRight(event) {
-    setIndex(imageIndex + 1);
+    const newIndex = imageIndex + 1 >= imagesCount ? 0 : imageIndex + 1;
+    setIndex(newIndex);
     event.preventDefault();
 };
 
 const getLeft = function getLeft(event) {
-    setIndex(imageIndex - 1);
+    const newIndex = imageIndex - 1 < 0 ? imagesCount - 1 : imageIndex - 1;
+    setIndex(newIndex);
     event.preventDefault();
 };
 
@@ -22,8 +21,12 @@ const setIndex = function setIndex(value) {
     imageIndex = value;
 
     [...frame.children].forEach((child, index) => {
-        targetWidth = (imageIndex - index) * width;
+        let difference = imageIndex - index;
+        difference =
+            Math.abs(difference) > imagesCount / 2 ? -difference : difference;
+        const targetWidth = difference * width;
         child.style.right = `${targetWidth}px`;
+        child.dataset.difference = `${difference}`;
     });
 
     console.log(`currentIndex: ${imageIndex}`);

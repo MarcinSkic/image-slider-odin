@@ -11,14 +11,8 @@
     transition: right 1s;
 }
 
-.shown {
-    right: 0;
-}
-
-.left {
-    right: 200px;
-}
-
-.right {
-    right: -200px;
+body {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
